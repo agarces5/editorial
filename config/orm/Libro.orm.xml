@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\Libro" table="LIBRO">
+    <indexes>
+      <index name="fk_LIBRO_AUTOR1_idx" columns="id_autor"/>
+      <index name="fk_LIBRO_TEMA_idx" columns="id_tema"/>
+      <index name="fk_LIBRO_IDIOMA1_idx" columns="id_idioma"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="isbn_UNIQUE" columns="isbn"/>
+    </unique-constraints>
+    <id name="isbn" type="bigint" column="isbn">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="titulo" type="string" column="titulo" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="edicion" type="integer" column="edicion" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="paginas" type="integer" column="paginas" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="stock" type="integer" column="stock" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="portada" type="string" column="portada" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sinopsis" type="text" column="sinopsis" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idAutor" target-entity="Autor" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_autor" referenced-column-name="id_autor"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idIdioma" target-entity="Idioma" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_idioma" referenced-column-name="id_idioma"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTema" target-entity="Tema" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_tema" referenced-column-name="id_tema"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

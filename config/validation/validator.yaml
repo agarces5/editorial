@@ -1,0 +1,23 @@
+App\Entity\Autor:
+    properties:
+        nombre:
+            - NotBlank:
+                message: "Nombre requerido"
+
+App\Entity\Usuario:
+    properties:
+        nickname:
+            - NotBlank: ~
+            - Unique:
+                message: Ya existe un usuario con el nickname "{{ value }}"
+        nombre:
+            - NotBlank:
+                message: "Debes proporcionar un nombre"
+        email:
+            - NotBlank: ~
+            - Email:
+                message: The email "{{ value }}" is not a valid email.
+            - Unique:
+                message: The email "{{ value }}" is already registered.
+        password:
+            - NotBlank: ~

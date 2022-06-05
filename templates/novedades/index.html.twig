@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NovedadesController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="gallery">
+{% for i in 0..10 %}
+            <div class="card">
+                <img src="/assets/portada.jpg" class="card-img-top custom-card" alt="..." style="height:10rem; object-fit:cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+{% endfor %}
+        </div>
+    </div>
+{% endblock %}

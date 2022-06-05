@@ -1,3 +1,11 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+app_homepage:
+    path: /
+    controller: App\Controller\HomepageController::index
+registration:
+    path: /registration
+    # the controller value has the format 'controller_class::method_name'
+    controller: App\Controller\RegistrationController::index

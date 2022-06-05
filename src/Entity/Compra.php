@@ -2,64 +2,13 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Compra
- *
- * @ORM\Table(name="COMPRA", uniqueConstraints={@ORM\UniqueConstraint(name="id_compra_UNIQUE", columns={"id_compra"})}, indexes={@ORM\Index(name="fk_USUARIO_has_LIBRO_LIBRO1_idx", columns={"isbn"}), @ORM\Index(name="fk_USUARIO_has_LIBRO_USUARIO1_idx", columns={"uuid"})})
- * @ORM\Entity
- */
 class Compra
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_compra", type="integer", nullable=false, options={"unsigned"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
     private $idCompra;
-
-    /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(name="fecha_compra", type="date", nullable=true)
-     */
     private $fechaCompra;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="Cantidad", type="integer", nullable=false)
-     */
     private $cantidad;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Direccion_envio", type="string", length=255, nullable=false)
-     */
     private $direccionEnvio;
-
-    /**
-     * @var \Libro
-     *
-     * @ORM\ManyToOne(targetEntity="Libro")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="isbn", referencedColumnName="isbn")
-     * })
-     */
     private $isbn;
-
-    /**
-     * @var \Usuario
-     *
-     * @ORM\ManyToOne(targetEntity="Usuario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="uuid", referencedColumnName="uuid")
-     * })
-     */
     private $uuid;
 
     public function getIdCompra(): ?int
@@ -72,11 +21,9 @@ class Compra
         return $this->fechaCompra;
     }
 
-    public function setFechaCompra(?\DateTimeInterface $fechaCompra): self
+    public function setFechaCompra(?\DateTimeInterface $fechaCompra): void
     {
         $this->fechaCompra = $fechaCompra;
-
-        return $this;
     }
 
     public function getCantidad(): ?int
@@ -84,11 +31,9 @@ class Compra
         return $this->cantidad;
     }
 
-    public function setCantidad(int $cantidad): self
+    public function setCantidad(int $cantidad): void
     {
         $this->cantidad = $cantidad;
-
-        return $this;
     }
 
     public function getDireccionEnvio(): ?string
@@ -96,11 +41,9 @@ class Compra
         return $this->direccionEnvio;
     }
 
-    public function setDireccionEnvio(string $direccionEnvio): self
+    public function setDireccionEnvio(string $direccionEnvio): void
     {
         $this->direccionEnvio = $direccionEnvio;
-
-        return $this;
     }
 
     public function getIsbn(): ?Libro
@@ -108,11 +51,9 @@ class Compra
         return $this->isbn;
     }
 
-    public function setIsbn(?Libro $isbn): self
+    public function setIsbn(?Libro $isbn): void
     {
         $this->isbn = $isbn;
-
-        return $this;
     }
 
     public function getUuid(): ?Usuario
@@ -120,12 +61,9 @@ class Compra
         return $this->uuid;
     }
 
-    public function setUuid(?Usuario $uuid): self
+    public function setUuid(?Usuario $uuid): void
     {
         $this->uuid = $uuid;
-
-        return $this;
     }
-
 
 }

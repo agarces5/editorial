@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\Compra" table="COMPRA">
+    <indexes>
+      <index name="fk_USUARIO_has_LIBRO_USUARIO1_idx" columns="uuid"/>
+      <index name="fk_USUARIO_has_LIBRO_LIBRO1_idx" columns="isbn"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="id_compra_UNIQUE" columns="id_compra"/>
+    </unique-constraints>
+    <id name="idCompra" type="integer" column="id_compra">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fechaCompra" type="datetime" column="fecha_compra" nullable="true"/>
+    <field name="cantidad" type="integer" column="Cantidad" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="direccionEnvio" type="string" column="Direccion_envio" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="uuid" target-entity="Usuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="uuid" referenced-column-name="uuid"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="isbn" target-entity="Libro" fetch="LAZY">
+      <join-columns>
+        <join-column name="isbn" referenced-column-name="isbn"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

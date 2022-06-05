@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuario{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-light mb-3 mt-3">
+        <div class="card-body">
+          <div class="card-header">Lista de Usuarios</div>
+            <AmpContent>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    {# <th>Uuid</th> #}
+                    <th>Nickname</th>
+                    <th>Roles</th>
+                    <th>Nombre</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>FechaIngreso</th>
+                    {# <th>Password</th> #}
+                    <th>Estado</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    {# <td>{{ usuario.uuid }}</td> #}
+                    <td>{{ usuario.nickname }}</td>
+                    <td>{{ usuario.roles ? usuario.roles|json_encode : '' }}</td>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.direccion }}</td>
+                    <td>{{ usuario.telefono }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.fechaIngreso ? usuario.fechaIngreso|date('Y-m-d') : '' }}</td>
+                    {# <td>{{ usuario.password }}</td> #}
+                    <td>{{ usuario.estado }}</td>
+                    <td>
+                        <a href="{{ path('app_usuario_show', {'nickname': usuario.nickname}) }}">show</a>
+                        <a href="{{ path('app_usuario_edit', {'nickname': usuario.nickname}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="11">Sin registros</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_usuario_new') }}">Crear nuevo</a>
+        </NonAmpContent>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
