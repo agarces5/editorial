@@ -2,9 +2,9 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="App\Entity\Libro" table="LIBRO">
     <indexes>
-      <index name="fk_LIBRO_AUTOR1_idx" columns="id_autor"/>
-      <index name="fk_LIBRO_TEMA_idx" columns="id_tema"/>
-      <index name="fk_LIBRO_IDIOMA1_idx" columns="id_idioma"/>
+      <index name="fk_AUTOR_LIBRO" columns="id_autor"/>
+      <index name="fk_TEMA_LIBRO" columns="id_tema"/>
+      <index name="fk_IDIOMA_LIBRO" columns="id_idioma"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="isbn_UNIQUE" columns="isbn"/>
@@ -40,6 +40,11 @@
     <field name="sinopsis" type="text" column="sinopsis" length="65535" nullable="true">
       <options>
         <option name="fixed"/>
+      </options>
+    </field>
+    <field name="updatedAt" type="datetime" column="updatedAt" nullable="true">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
       </options>
     </field>
     <many-to-one field="idAutor" target-entity="Autor" fetch="LAZY">

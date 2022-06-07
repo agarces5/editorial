@@ -8,7 +8,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\Routing\Annotation\Route;
 
 class RegistrationController extends AbstractController
 {
@@ -19,21 +18,22 @@ class RegistrationController extends AbstractController
         $this->passwordEncoder = $passwordEncoder;
     }
 
-    public function index(Request $request,  EntityManagerInterface $entityManager,)
+    public function index(Request $request, EntityManagerInterface $entityManager,)
     {
         $usuario = new Usuario();
-
+        
         $form = $this->createForm(UsuarioType::class, $usuario);
-
+        
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
             // Encode the new users password
+            dump($usuario);
             $usuario->setPassword($this->passwordEncoder->hashPassword($usuario, $usuario->getPassword()));
-
+            
             // Set their role - ya lo hacemos en constructor
             // $usuario->setRoles(['ROLE_USER']);
-
+            
             // Save
             $entityManager->persist($usuario);
             $entityManager->flush();

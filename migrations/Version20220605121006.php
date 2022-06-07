@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220604173815 extends AbstractMigration
+final class Version20220605121006 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,18 +20,12 @@ final class Version20220604173815 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE AUTOR');
-        $this->addSql('ALTER TABLE COMPRA');
-        $this->addSql('ALTER TABLE LIBRO');
-        $this->addSql('ALTER TABLE TEMA');
+        $this->addSql('ALTER TABLE USUARIO CHANGE uuid uuid CHAR(36) DEFAULT UUID() NOT NULL COMMENT \'(DC2Type:uuid)\'');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE AUTOR');
-        $this->addSql('ALTER TABLE COMPRA');
-        $this->addSql('ALTER TABLE LIBRO');
-        $this->addSql('ALTER TABLE TEMA');
+        $this->addSql('ALTER TABLE USUARIO CHANGE uuid uuid CHAR(36) NOT NULL COMMENT \'(DC2Type:uuid)\'');
     }
 }

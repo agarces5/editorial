@@ -1,0 +1,11 @@
+<vich_uploader class="App\Entity\Autor">
+    <field 
+    mapping="foto_autores" 
+    name="archivo_foto" 
+    filename_property="foto"
+    size="" 
+    dimensions="" 
+    mime_type="" 
+    original_name="" 
+    />
+</vich_uploader>

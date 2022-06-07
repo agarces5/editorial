@@ -5,7 +5,9 @@
       <unique-constraint name="uuid_UNIQUE" columns="uuid"/>
     </unique-constraints>
     <id name="uuid" type="uuid" column="uuid">
-      <generator strategy="IDENTITY"/>
+      <options>
+        <option name="default">UUID()</option>
+      </options>
     </id>
     <field name="nickname" type="string" column="nickname" length="255" nullable="false">
       <options>

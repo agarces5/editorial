@@ -1,0 +1,11 @@
+<vich_uploader class="App\Entity\Libro">
+    <field 
+    mapping="portadas" 
+    name="archivo_portada" 
+    filename_property="portada"
+    size="" 
+    dimensions="" 
+    mime_type="" 
+    original_name="" 
+    />
+</vich_uploader>

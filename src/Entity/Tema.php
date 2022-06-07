@@ -24,5 +24,9 @@ class Tema
         $this->nombre = $nombre;
     }
 
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 
 }

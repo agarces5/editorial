@@ -11,6 +11,10 @@ class NovedadesController extends AbstractController
     #[Route('/novedades', name: 'app_novedades')]
     public function index(): Response
     {
+        $novedades = $entityManager
+        ->getRepository(Usuario::class)
+        ->findAll();
+
         return $this->render('novedades/index.html.twig', [
             'controller_name' => 'NovedadesController',
         ]);

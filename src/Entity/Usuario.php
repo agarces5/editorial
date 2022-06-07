@@ -122,7 +122,11 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     }
     public function __toString()
     {
-        return $this->nickname;
+        return $this->uuid . ' - ' . $this->nickname;
     }
 
+    public function isEstado(): ?bool
+    {
+        return $this->estado;
+    }
 }

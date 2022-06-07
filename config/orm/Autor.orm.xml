@@ -19,5 +19,10 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="updatedAt" type="datetime" column="updatedAt" nullable="true">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>
