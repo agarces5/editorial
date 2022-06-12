@@ -30,7 +30,8 @@ class AutorCrudController extends AbstractCrudController
         $image = ImageField::new('foto')->setBasePath('uploads/fotos_autores')->setUploadDir('public/uploads/fotos_autores');
         $fields = [
             TextField::new('nombre'),
-            TextEditorField::new('descripcion'),
+            TextEditorField::new('descripcion')->onlyOnForms(),
+            TextareaField::new('descripcion')->renderAsHtml()->hideOnForm()
         ];
 
         if ($pageName == Crud::PAGE_INDEX || $pageName == Crud::PAGE_DETAIL) {

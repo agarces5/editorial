@@ -36,7 +36,16 @@ class Libro
     private Tema $idTema;
     private Idioma $idIdioma;
 
-    public function getIsbn(): ?string
+    public function __construct()
+    {
+        $this->updatedAt=new \DateTime();
+    }
+
+    public function setIsbn(int $isbn): void
+    {
+        $this->isbn = $isbn;
+    }
+    public function getIsbn(): ?int
     {
         return $this->isbn;
     }

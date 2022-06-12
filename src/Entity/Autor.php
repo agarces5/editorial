@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class Autor
 {
-    private int $idAutor;
+    private readonly int $idAutor;
     private string $nombre;
     private $foto;
     /**
@@ -22,14 +22,9 @@ class Autor
      * )
      * @var File|null
      */
-    private File $archivo_foto;
-    private string $descripcion;
+    private ?File $archivo_foto;
+    private ?string $descripcion;
     private DateTime $updatedAt;
-
-    // public function __construct($nombre)
-    // {
-    //     $this->nombre=$nombre;
-    // }
 
     public function getIdAutor(): ?int
     {
@@ -85,7 +80,7 @@ class Autor
     * @param File|null $imageFile
     * @return $this
     */
-    public function setArchivoFoto(?File $archivo_foto): ?self
+    public function setArchivoFoto(?File $archivo_foto = null): ?self
     {
         $this->archivo_foto = $archivo_foto;
         if (null !== $archivo_foto) {
