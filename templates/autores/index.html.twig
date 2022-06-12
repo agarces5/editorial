@@ -3,7 +3,7 @@
 {% block title %}Autores!{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container py-4">
 {% for autor in autores %}
     <div class="row">
         <div class="wrapper d-flex">
@@ -16,7 +16,9 @@
                     <p>{{ autor.descripcion|striptags|raw }}</p>
                 </div>
                 <div class="product-price-btn text-end">
-                    <a href="{{ path('app_autores_libros', {'idAutor': autor.idAutor }) }}" class="btn btn-primary">Ver libros</a>
+                    <a href="{{ path('app_autores_libros', {'idAutor': autor.idAutor }) }}"
+                       class="btn btn-primary">Ver libros
+                    </a>
                 </div>
             </div>
         </div>

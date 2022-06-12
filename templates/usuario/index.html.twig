@@ -3,13 +3,12 @@
 {% block title %}Usuario{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container py-4">
   <div class="row">
     <div class="col-md-12">
       <div class="card bg-light mb-3 mt-3">
         <div class="card-body">
           <div class="card-header">Lista de Usuarios</div>
-            <AmpContent>
 
         <table class="table">
             <thead>
@@ -54,7 +53,7 @@
         </table>
 
         <a href="{{ path('app_usuario_new') }}">Crear nuevo</a>
-        </NonAmpContent>
+
         </div>
       </div>
     </div>

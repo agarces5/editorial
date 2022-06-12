@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/autores')]
 class AutoresController extends AbstractController
 {
-    #[Route('/', name: 'app_autores', methods: ['GET'])]
+    #[Route('/', name: 'app_autores')]
     public function index(EntityManagerInterface $entityManager): Response
     {
         $autores = $entityManager
